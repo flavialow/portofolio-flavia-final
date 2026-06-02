@@ -1,0 +1,480 @@
+﻿
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flávia Löw — Portfólio</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=VT323&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- PALETA DE CORES --- */
+        :root {
+            --verde-pastel: #e2f3e5;
+            --verde-medio: #72b886;
+            --azul-claro: #dbe7fc;
+            --azul-aero: #3a86ff;
+            --azul-escuro: #1e3d59;
+            --bg-light: #ffffff;
+            --bg-card: #f4f9f5;
+            --text-dark: #1a2520;
+            --accent-pink: #e63946;
+        }
+
+        body {
+            font-family: 'Special Elite', monospace;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* --- WALLPAPER DE FUNDO UNIFICADO --- */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%;
+            background-image: url('meu_wallpaper.jpg'); 
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat; 
+            opacity: 1; /* Mantido em 100% conforme sua escolha */
+            z-index: -1;
+        }
+
+        /* Linhas orgânicas flutuantes adicionais via sobreposição decorativa */
+        body::after {
+            content: "";
+            position: fixed;
+            bottom: -10%; left: -10%; width: 120%; height: 60%;
+            background: radial-gradient(ellipse at bottom left, rgba(58, 134, 255, 0.1), transparent 60%),
+                        radial-gradient(ellipse at bottom right, rgba(114, 184, 134, 0.12), transparent 60%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* --- ANIMAÇÕES SUAVES --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animated-section {
+            animation: fadeInUp 0.7s ease-out forwards;
+        }
+
+        /* --- PERSONALIZAÇÃO NAVBAR (ESTILO VIDRO / AERO GLASS) --- */
+        .navbar-custom {
+            background-color: rgba(255, 255, 255, 0.85) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 2px solid rgba(58, 134, 255, 0.2);
+            padding: 12px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .navbar-custom .navbar-brand {
+            font-family: 'VT323', monospace;
+            font-size: 2.2rem;
+            color: var(--azul-escuro) !important;
+            text-shadow: 2px 2px var(--azul-claro);
+            letter-spacing: 1px;
+        }
+
+        .navbar-custom .nav-link {
+            color: var(--text-dark) !important;
+            margin-left: 15px;
+            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-bottom: 2px solid transparent;
+        }
+
+        .navbar-custom .nav-link:hover {
+            color: var(--azul-aero) !important;
+            border-bottom: 2px solid var(--azul-aero);
+        }
+
+        /* --- SEÇÃO HERO --- */
+        .hero-section {
+            padding: 100px 0 60px 0;
+        }
+
+        .hero-box {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 2px solid rgba(114, 184, 134, 0.4);
+            border-radius: 24px;
+            padding: 50px 40px;
+            box-shadow: 0 15px 35px rgba(58, 134, 255, 0.08), inset 0 0 20px rgba(255,255,255,0.6);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-title {
+            font-size: 3.8rem;
+            color: var(--azul-escuro);
+            text-shadow: 2px 2px 0px var(--azul-claro);
+            margin-bottom: 12px;
+        }
+
+        .hero-subtitle {
+            font-family: 'VT323', monospace;
+            font-size: 2rem;
+            color: var(--azul-aero);
+            letter-spacing: 1px;
+        }
+
+        /* --- BOTÕES CUSTOMIZADOS --- */
+        .btn-custom {
+            background: linear-gradient(to bottom, #ffffff, var(--azul-claro));
+            color: var(--azul-escuro);
+            border: 2px solid var(--azul-aero);
+            font-family: 'Special Elite', monospace;
+            font-weight: bold;
+            padding: 12px 28px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(58, 134, 255, 0.15);
+            transition: all 0.2s ease;
+        }
+
+        .btn-custom:hover {
+            background: linear-gradient(to bottom, var(--azul-claro), var(--azul-aero));
+            color: white;
+            box-shadow: 0 6px 12px rgba(58, 134, 255, 0.25);
+            transform: translateY(-2px);
+        }
+
+        /* --- CARDS E PROJETOS --- */
+        .section-title {
+            font-size: 2.4rem;
+            color: var(--azul-escuro);
+            border-left: 6px solid var(--azul-aero);
+            padding-left: 15px;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 1px rgba(255,255,255,0.8);
+        }
+
+        .card-custom {
+            background: rgba(255, 255, 255, 0.95) !important;
+            border: 2px solid rgba(58, 134, 255, 0.2) !important;
+            border-radius: 16px !important;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+        }
+
+        .card-custom:hover {
+            transform: translateY(-6px);
+            border-color: var(--azul-aero) !important;
+            box-shadow: 0 12px 24px rgba(58, 134, 255, 0.18);
+        }
+
+        /* Nova regra para as imagens reais ocuparem o topo do card perfeitamente */
+        .card-img-top-custom {
+            width: 100%;
+            height: 240px;
+            object-fit: cover; /* Faz a imagem preencher o espaço sem distorcer */
+            border-bottom: 2px solid rgba(58, 134, 255, 0.15);
+        }
+
+        /* Container responsivo para o vídeo do YouTube */
+        .video-container-custom {
+            width: 100%;
+            height: 280px;
+            border-bottom: 2px solid rgba(58, 134, 255, 0.15);
+        }
+        .video-container-custom iframe {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-custom .card-title {
+            color: var(--azul-escuro);
+            font-size: 1.35rem;
+            font-weight: bold;
+        }
+
+        .card-custom .card-text {
+            font-size: 0.98rem;
+            color: #2c3530;
+        }
+
+        /* --- SEÇÃO SOBRE MIM --- */
+        .about-section {
+            padding: 60px 0;
+        }
+
+        .about-text-box {
+            background: rgba(255, 255, 255, 0.93);
+            border-left: 5px solid var(--verde-medio);
+            border-radius: 16px;
+            padding: 35px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        }
+
+        /* --- SEÇÃO CONTATO --- */
+        .contact-section {
+            padding: 60px 0 100px 0;
+        }
+
+        .contact-card-box {
+            background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(226, 243, 229, 0.95));
+            border: 2px solid rgba(114, 184, 134, 0.4);
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+
+        .contact-link {
+            color: var(--azul-escuro);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.2s, transform 0.2s;
+            display: inline-block;
+            margin-bottom: 10px;
+            font-size: 1.15rem;
+            border-bottom: 1px dashed var(--azul-aero);
+        }
+
+        .contact-link:hover {
+            color: var(--accent-pink);
+            transform: scale(1.02);
+        }
+
+        footer {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-top: 1px solid rgba(58, 134, 255, 0.15);
+            padding: 25px 0;
+            font-size: 0.9rem;
+            color: var(--azul-escuro);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light navbar-custom sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">FLÁVIA LÖW //</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#portfolio">Projetos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#sobre">Sobre Mim</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contato">Contato</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="container hero-section animated-section">
+        <div class="hero-box text-start"> <div class="row align-items-center">
+                
+                <div class="col-lg-4 col-md-5 col-sm-12 text-center mb-4 mb-md-0">
+                    <img src="logo.jpg" alt="Foto de Flávia Löw" class="img-fluid rounded-circle shadow" style="width: 250px; height: 250px; object-fit: cover; border: 4px solid var(--azul-claro);">
+                </div>
+                
+                <div class="col-lg-8 col-md-7 col-sm-12 text-center text-md-start ps-md-4">
+                    <h1 class="hero-title">Flávia Löw</h1>
+                    <p class="hero-subtitle">Fotografia • Desenho • Direção de Arte</p>
+                    <p class="lead mt-4" style="font-size: 1.15rem; max-width: 720px; color: #2c3a31;">
+                        Estudante de cinema de 1º semestre. Busco olhar o mundo através de lentes estéticas e críticas, mesclando referências clássicas e linguagens digitais fluidas e vibrantes.
+                    </p>
+                    <div class="mt-4">
+                        <a href="#portfolio" class="btn btn-custom me-2">Ver Portfólio</a>
+                        <a href="#contato" class="btn btn-custom">Entrar em Contato</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <main class="container" id="portfolio">
+        
+        <section class="mb-5 animated-section">
+            <h2 class="section-title">Fotografia</h2>
+            <div class="row">
+                
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="card card-custom h-100">
+                        <img src="borrado.jpg" alt="Borrão" class="card-img-top-custom">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h3 class="card-title h5 mb-0">Borrão</h3>
+                                <span class="badge bg-light text-dark border">2026</span>
+                            </div>
+                            <p class="card-text">Foto feita pelo celular. Captura espontânea da luz da rua através da janela do carro.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="card card-custom h-100">
+                        <img src="folhas.jpg" alt="Folhas" class="card-img-top-custom">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h3 class="card-title h5 mb-0">Folhas</h3>
+                                <span class="badge bg-light text-dark border">2026</span>
+                            </div>
+                            <p class="card-text">Foto feita pelo celular. Estudo focado na luz, nas cores e nas formas das folhas sobre a iluminação do sol.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="card card-custom h-100"> 
+                        <img src="arvore.jpg" alt="arvore" class="card-img-top-custom">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h3 class="card-title h5 mb-0">Galhos frios</h3>
+                                <span class="badge bg-light text-dark border">2023</span>
+                            </div>
+                            <p class="card-text">Foto feita com uma câmera canon. Paisagem de arvores no inverno.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="mb-5 animated-section">
+            <h2 class="section-title">Desenho</h2>
+            <div class="row">
+                
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="card card-custom h-100">
+                        <img src="homem.jpg" alt="Na cozinha, esquecimento" class="card-img-top-custom">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h3 class="card-title h5 mb-0">Na cozinha, esquecimento</h3>
+                                <span class="badge bg-light text-dark border">2024</span>
+                            </div>
+                            <p class="card-text">Retrato reflexivo trabalhado em mídia mista de lápis de cor e grafite.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="card card-custom h-100">
+                        <img src="cure.jpg" alt="Robert Smith" class="card-img-top-custom">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h3 class="card-title h5 mb-0">Robert Smith</h3>
+                                <span class="badge bg-light text-dark border">2024</span>
+                            </div>
+                            <p class="card-text">Estudo de retrato do Robert Smith, vocalista da banda The Cure. Trabalho feito em carvão.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="card card-custom h-100">
+                        <img src="mulher.jpg" alt="Sombra magenta" class="card-img-top-custom">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h3 class="card-title h5 mb-0">Sombra magenta</h3>
+                                <span class="badge bg-light text-dark border">2024</span>
+                            </div>
+                            <p class="card-text">Desenho de estudo de forma e sombra, executado com lápis de cor e grafite.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="mb-5 animated-section">
+            <h2 class="section-title">Cinema & Videoarte</h2>
+            <div class="row">
+                
+                <div class="col-12 col-md-8 mx-auto">
+                    <div class="card card-custom h-100">
+                        <div class="video-container-custom">
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/XJLmzbbJ2pc?si=rLUKaRCD7IO2VnSR&amp;start=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>" 
+                        </div>
+                        <div class="card-body text-center">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <h3 class="card-title h4 mb-0">Espremido</h3>
+                                <span class="badge bg-light text-dark border">2026</span>
+                            </div>
+                            <p class="card-text">Uma reflexão sobre nossa saúde mental em um planeta em que é cada vez mais comum o uso de Inteligência Artificial.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <section class="container about-section" id="sobre">
+        <div class="row">
+        <div class="col-lg-4 col-md-5 col-sm-12 text-center mb-4 mb-md-0"> <h2 class="section-title">Sobre Mim</h2>
+                    <img src="perfil.jpg" alt="Foto de Flávia Löw" class="img-fluid rounded-circle shadow" style="width: 250px; height: 250px; object-fit: cover; border: 4px solid var(--azul-claro);">
+                </div>
+            <div class="col-md-10 mx-auto">
+               
+                <div class="about-text-box">
+                    <p class="fs-5 mb-3">
+                       Com uma formação em desenho realista, procuro aproximar o mundo que existe e aquele que eu enxergo através de câmeras ou com auxilio de ferramentas artísticas. 
+                    </p>
+                    <p class="mb-3">
+                        Atuo de forma independente produzindo comissões de desenhos e como freelancer de fotografia. Meu olhar busca capturar a realidade de forma crítica e altamente estética.
+                    </p>
+                    <p class="mb-0">
+                        Com forte inspiração estética na expressiveness contemporânea de <strong>Victoria Vincent</strong> e na harmonia clássica ornamental de <strong>Alphonse Mucha</strong>, busco cruzar o realismo do Art Nouveau com a caricatura do estilo cartoon.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container contact-section" id="contato">
+        <div class="row text-center">
+            <div class="col-md-8 mx-auto">
+                <h2 class="section-title text-start d-inline-block">Contato</h2>
+                <p class="lead mb-4">Entre em contato para orçamentos, parcerias ou comissões artísticas:</p>
+                
+                <div class="p-4 contact-card-box text-start d-inline-block w-100" style="max-width: 550px;">
+                    <div class="mb-3">
+                        <span class="text-muted d-block" style="font-size: 0.9rem;">E-mail Pessoal:</span>
+                        <a href="mailto:flavia.low@gmail.com" class="contact-link">flavia.low@gmail.com</a>
+                    </div>
+                    <div>
+                        <span class="text-muted d-block" style="font-size: 0.9rem;">E-mail Acadêmico:</span>
+                        <a href="mailto:flavia.low@acad.espm.br" class="contact-link">flavia.low@acad.espm.br</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center">
+        <div class="container">
+            <p class="mb-0">© 2026 Flávia Löw — Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

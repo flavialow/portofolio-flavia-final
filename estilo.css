@@ -1,0 +1,190 @@
+﻿*{
+	margin: 0; /*tirando todas as margens da página */	
+}
+body {
+	color: black;
+	font-family: "Special Elite", system-ui;
+}
+	.special-elite-regular {
+  font-family: "Special Elite", system-ui;
+  font-weight: 400;
+  font-style: normal;
+
+
+}
+#menu {
+	width: 100%;
+	height: 50px;
+	background-color: white;
+	position: fixed;
+	text-align: center;
+	opacity: 0.8;
+	position: fixed;
+	padding-top: 10px;
+	
+}
+#menu a { 
+	color: #000;
+	
+	/*text-decoration: underline; /* underline ou oversline na hr de clicar no link*/
+}
+#menu a:hover { 
+	color: green;
+	border-top: #000 solid 2px;
+
+}	
+#home {
+	width: 100%;
+	height: 100vh; 
+	background-color: geen;
+	background: url(floresta1.jpg) top center no-repeat;
+	background-size: cover; /*deixa a foto com seu tamanho total preenchenco todo o fundo, 
+	diferente do contain*/ 
+	
+}	
+#pagina1 {
+	width: 100%;
+	height: 100vh; 
+	background-color: orange;
+		background: url(piscina.jpg) top center no-repeat;
+	background-size: cover;
+}
+#pagina2 {
+	width: 100%;
+	height: 100vh; 
+	background-color: pink;
+	background: url(petala.webp) top center no-repeat;
+	background-size: cover;
+}	
+#pagina3 {
+	width: 100%;
+	height: 100vh; 
+	background-color: pink;
+	background: url(netuno.jpg) top center no-repeat;
+	background-size: cover;
+}	
+h1 {
+	color: #fff;
+	background-color: #000;
+	text-align: center;
+	padding: 1%;
+	opacity: 0.5;/*deica a tarja 50% transparente*/
+}
+p {
+	color: #000;
+	margin: 0;
+    padding: 20px;
+    font-weight: bold;
+}
+h2 {
+	color: #fff;
+	margin: 0;
+    padding: 20px;
+    background-color: #000;
+    opacity: 0.5;
+    padding: 1%;
+}
+h3 {
+	color: #fff;
+	margin: 0;
+    padding: 20px;
+    background-color: #000;
+    opacity: 0.5;
+    padding: 1%;
+}
+
+#titulo {
+	padding-top: 10%;
+	/* nao esta centralizado, para isso, usar um  text align*/ 
+}
+#topo{
+	width: 100px;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+} 
+
+#container {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding-top: 10%;
+}
+
+/* Cada coluna */
+.card {
+  text-align: center;
+}
+
+/* Imagens */
+.card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Texto */
+.card p {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+/* Responsivo para tablet */
+@media (max-width: 900px) {
+  .galeria {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Responsivo para celular */
+@media (max-width: 600px) {
+  .galeria {
+    grid-template-columns: 1fr;
+  }
+}
+.responsiva {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+}
+
+.item100 {
+	margin-top: 200px;
+	flex: 100%;
+	text-align: center;
+	/*padding: 10px; não é recomendado usar padding em região estrutural */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#rodape a:hover { 
+	color: green;
+	border-top: #000 solid 2px;
+
+		.texto-home{
+    color: #ffffff;
+    font-size: 5000px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin-top: 20px;
+    line-height: 1.6;
+}
